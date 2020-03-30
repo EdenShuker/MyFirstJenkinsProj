@@ -4,7 +4,6 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building...'
-        sh 'll'
         checkout(scm: scm, changelog: true, poll: true)
         sh '''
                     pip install -e src/
