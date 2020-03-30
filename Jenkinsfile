@@ -4,6 +4,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
+                sh '''
+                    pip install -e src/
+                    pip install -e test/
+                '''
             }
         }
         stage('Test') {
