@@ -4,7 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                checkout csm
+                sh 'll'
+                checkout
                 sh '''
                     pip install -e src/
                     pip install -e test/
