@@ -6,8 +6,8 @@ pipeline {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
         sh '''
-                    pip install -e src/
-                    pip install -e test/
+                    pip install -e jenkins_proj/src/
+                    pip install -e jenkins_proj/test/
                 '''
       }
     }
