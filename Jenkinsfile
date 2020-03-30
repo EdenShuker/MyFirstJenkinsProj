@@ -5,10 +5,7 @@ pipeline {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        sh '''
-                    pip install -e jenkins_proj/src/
-                    pip install -e jenkins_proj/test/
-                '''
+        bat(script: 'pip3 install jenkins_proj/src/', returnStdout: true, returnStatus: true)
       }
     }
 
