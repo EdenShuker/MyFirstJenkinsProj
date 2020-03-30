@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'll'
-                checkout
+                checkout scm
                 sh '''
                     pip install -e src/
                     pip install -e test/
