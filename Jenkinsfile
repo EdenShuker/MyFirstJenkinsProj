@@ -6,9 +6,7 @@ pipeline {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
         bat 'python -c "print(\'hello\')"'
-        bat(script: 'python --version', returnStdout: true)
-        bat(script: 'pip --version', returnStdout: true, returnStatus: true)
-        bat(script: 'dir', returnStatus: true, returnStdout: true)
+        bat(script: 'python -m pip install src/', returnStdout: true, returnStatus: true)
       }
     }
 
