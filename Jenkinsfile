@@ -7,6 +7,7 @@ pipeline {
         checkout(scm: scm, changelog: true, poll: true)
         bat(script: 'python -m pip install src/', returnStdout: true, returnStatus: true)
         bat(script: 'python -m pip install test/', returnStatus: true, returnStdout: true)
+        bat(script: 'python3 -c "print(\'Hello World\')"', returnStdout: true)
       }
     }
 
