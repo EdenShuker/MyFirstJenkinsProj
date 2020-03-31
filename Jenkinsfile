@@ -7,6 +7,7 @@ pipeline {
         checkout(scm: scm, changelog: true, poll: true)
         bat 'python -c "print(\'hello\')"'
         bat(script: 'python --version', returnStdout: true)
+        bat(script: 'pip --version', returnStdout: true)
       }
     }
 
