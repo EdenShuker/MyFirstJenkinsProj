@@ -6,13 +6,10 @@ pipeline {
         deleteDir()
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        bat 'python -m pip install virtualenv'
-        bat(script: 'virtualenv env ', returnStatus: true, returnStdout: true)
-        bat """
-            .env/Scripts/activate.bat
-            pip install src/
-            echo 'Hello World'
-        """
+        withPythonEnv('env') {
+    	    // Creates the virtualenv before proceeding
+	        bat 'pip install src/'
+        }
       }
     }
 
