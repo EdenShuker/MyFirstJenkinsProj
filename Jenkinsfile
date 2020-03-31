@@ -16,7 +16,10 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Testing...'
-        bat 'py.test test/jenkins_proj_test/ --junit-xml=test_results.xml'
+        withPythonEnv('python') {
+    	    // Creates the virtualenv before proceeding
+	        bat 'py.test test/jenkins_proj_test/ --junit-xml=test_results.xml'
+        }
         junit 'test_results.xml'
       }
     }
