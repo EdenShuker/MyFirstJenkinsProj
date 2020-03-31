@@ -6,7 +6,7 @@ pipeline {
         deleteDir()
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        withPythonEnv('env') {
+        withPythonEnv('python3') {
     	    // Creates the virtualenv before proceeding
 	        bat 'pip install src/'
         }
