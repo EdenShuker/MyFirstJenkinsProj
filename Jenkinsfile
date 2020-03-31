@@ -8,7 +8,7 @@ pipeline {
         bat """
             python -m pip install virtualenv
             virtualenv env
-            call env\Scripts\activate.bat
+            env\Scripts\activate.bat
             pip install src/
             pip install test/
         """
