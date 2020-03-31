@@ -1,15 +1,11 @@
 pipeline {
-  agent {
-    node {
-      label 'python2.7'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
+        bat 'python3 -c "print(\'hello\')"'
       }
     }
 
