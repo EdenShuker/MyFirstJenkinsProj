@@ -3,16 +3,17 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        deleteDir()
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        bat """
+        bat '''
             python -m pip install virtualenv
             virtualenv env
             env/Scripts/activate.bat
             pip install src/
             pip install test/
-        """
-        }
+        '''
+      }
     }
 
     stage('Test') {
