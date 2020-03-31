@@ -5,14 +5,16 @@ pipeline {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        bat 'python -c "print(\'hello\')"'
         bat(script: 'python -m pip install src/', returnStdout: true, returnStatus: true)
+        bat(script: 'python -m pip install test/', returnStatus: true, returnStdout: true)
       }
     }
 
     stage('Test') {
       steps {
         echo 'Testing...'
+        bat 'py.test test/jenkins_proj  --junit-xml=test_results.xml'
+        junit 'test_results.xml'
       }
     }
 
