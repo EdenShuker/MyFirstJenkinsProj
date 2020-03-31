@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        bat 'python -c "print(\'hello\')"'
+        bat 'python -c "print(\'hello\')"\\n python -c "print(\'world\')"'
       }
     }
 
