@@ -6,13 +6,7 @@ pipeline {
         deleteDir()
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        bat '''
-            python -m pip install virtualenv
-            virtualenv env
-            env/Scripts/activate.bat
-            pip install src/
-            pip install test/
-        '''
+        bat '            python -m pip install virtualenv            virtualenv env            env/Scripts/activate.bat            python -m pip install src/            python -m pip install test/        '
       }
     }
 
