@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        deleteDir()
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
         withPythonEnv('python') {
