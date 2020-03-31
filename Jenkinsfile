@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        withPythonEnv('python') {
+        withPythonEnv('C:\Users\edens\AppData\Local\Programs\Python\Python37\python3') {
     	    // Creates the virtualenv before proceeding
 	        bat 'pip install src/'
 	        bat 'pip install test/'
@@ -16,7 +16,7 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Testing...'
-        withPythonEnv('python') {
+        withPythonEnv('C:\Users\edens\AppData\Local\Programs\Python\Python37\python3') {
     	    // Creates the virtualenv before proceeding
 	        bat 'py.test test/jenkins_proj_test/ --junit-xml=test_results.xml'
         }
