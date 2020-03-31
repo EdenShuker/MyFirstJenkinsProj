@@ -7,8 +7,8 @@ pipeline {
         checkout(scm: scm, changelog: true, poll: true)
         withPythonEnv('python') {
     	    // Creates the virtualenv before proceeding
-    	    pip install wheel
-    	    python src/setup.py bdist_wheel
+    	    bat 'pip install wheel'
+    	    bat 'python src/setup.py bdist_wheel'
 	        bat 'pip install src/'
 	        bat 'pip install test/'
         }
