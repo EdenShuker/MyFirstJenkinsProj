@@ -5,19 +5,22 @@ pipeline {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        withPythonEnv('C:/Users/edens/AppData/Local/Programs/Python/Python37/python3') {
+        withPythonEnv('python') {
     	    // Creates the virtualenv before proceeding
+    	    pip install wheel
+    	    python src/setup.py bdist_wheel
 	        bat 'pip install src/'
 	        bat 'pip install test/'
         }
       }
     }
-
     stage('Test') {
       steps {
         echo 'Testing...'
-        withPythonEnv('C:/Users/edens/AppData/Local/Programs/Python/Python37/python3') {
+        withPythonEnv('python') {
     	    // Creates the virtualenv before proceeding
+    	    bat 'pip install test/'
+    	    bat 'pip install src/dist/*'
 	        bat 'py.test test/jenkins_proj_test/ --junit-xml=test_results.xml'
         }
         junit 'test_results.xml'
