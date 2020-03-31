@@ -9,8 +9,6 @@ pipeline {
     	    // Creates the virtualenv before proceeding
     	    bat 'pip install wheel'
     	    bat 'python src/setup.py bdist_wheel'
-	        bat 'pip install src/'
-	        bat 'pip install test/'
         }
       }
     }
@@ -20,7 +18,7 @@ pipeline {
         withPythonEnv('python') {
     	    // Creates the virtualenv before proceeding
     	    bat 'pip install test/'
-    	    bat 'pip install src/dist/*'
+    	    bat 'pip install dist/jenkins_proj-1.0.0-py2-none-any.whl'
 	        bat 'py.test test/jenkins_proj_test/ --junit-xml=test_results.xml'
         }
         junit 'test_results.xml'
