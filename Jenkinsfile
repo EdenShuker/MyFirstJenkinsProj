@@ -8,9 +8,10 @@ pipeline {
         withPythonEnv('python') {
     	    // Creates the virtualenv before proceeding
     	    bat 'pip install wheel'
-    	    bat 'cd src'
-    	    bat 'python setup.py bdist_wheel'
-    	    bat 'cd ..'
+    	    bat """
+    	        cd src
+    	        python setup.py bdist_wheel
+    	        """
         }
       }
     }
