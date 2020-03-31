@@ -5,10 +5,14 @@ pipeline {
       steps {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
-        bat(script: 'python -m pip install src/', returnStdout: true, returnStatus: true)
-        bat(script: 'python -m pip install test/', returnStatus: true, returnStdout: true)
-        bat(script: 'python3 -c "print(\'Hello World\')"', returnStdout: true)
-      }
+        bat """
+            python -m pip install virtualenv
+            virtualenv env
+            call env\Scripts\activate.bat
+            pip install src/
+            pip install test/
+        """
+        }
     }
 
     stage('Test') {
