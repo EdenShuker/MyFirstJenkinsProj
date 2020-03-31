@@ -7,7 +7,7 @@ pipeline {
         echo 'Building...'
         checkout(scm: scm, changelog: true, poll: true)
         bat '            python -m pip install virtualenv            virtualenv env '
-        bat(script: 'env/Scripts/activate.bat', returnStdout: true, returnStatus: true)
+        bat(script: 'call env/Scripts/activate.bat', returnStdout: true, returnStatus: true)
         bat 'pip install src/'
       }
     }
