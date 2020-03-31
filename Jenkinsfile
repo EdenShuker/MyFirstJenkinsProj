@@ -9,6 +9,7 @@ pipeline {
         withPythonEnv('python') {
     	    // Creates the virtualenv before proceeding
 	        bat 'pip install src/'
+	        bat 'pip install test/'
         }
       }
     }
