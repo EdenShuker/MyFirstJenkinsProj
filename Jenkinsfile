@@ -8,8 +8,11 @@ pipeline {
         checkout(scm: scm, changelog: true, poll: true)
         bat 'python -m pip install virtualenv'
         bat(script: 'virtualenv env ', returnStatus: true, returnStdout: true)
-        bat(script: 'call env/Scripts/activate.bat', returnStdout: true, returnStatus: true)
-        bat 'pip install src/'
+        bat """
+            .env/Scripts/activate.bat
+            pip install src/
+            echo 'Hello World'
+        """
       }
     }
 
